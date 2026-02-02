@@ -23,6 +23,10 @@ En Rust, por defecto, los valores con un tamaño conocido y fijo se almacenan en
 
 `Box<T>` te permite almacenar datos en el **heap** (montón) en lugar del *stack*. Lo que se queda en el *stack* es solo el puntero (la dirección de memoria) hacia esos datos en el *heap*.
 
+<div align="center">
+  <img src="./rust_box_heap_handdrawn.png" alt="Ferris con un mapa hacia el Heap" width="400">
+</div>
+
 Mira este ejemplo sencillo:
 
 ```rust
@@ -150,6 +154,10 @@ Hasta ahora, con `Box`, un dato tiene un solo dueño. Si el dueño desaparece, e
 
 Aquí entra **`Rc` (Reference Counting)**. Imagina una televisión 📺 en una sala de espera: muchas personas la miran, pero nadie es el dueño único y no se puede apagar hasta que la última persona se vaya.
 
+<div align="center">
+  <img src="./rust_rc_television_handdrawn.png" alt="Cangrejos viendo la misma TV" width="400">
+</div>
+
 > **Pregunta:** Si `Rc` permite que varias variables sean "dueñas" del mismo dato en el *heap*, ¿cómo crees que sabe Rust cuándo es seguro eliminar (hacer *drop* de) ese dato finalmente?
 >
 > **Respuesta:** **Cuando no queda ningún dueño.**
@@ -200,7 +208,7 @@ fn main() {
 ```
 
 <div align="center">
-  <img src="./ciclo_referencia_rust_espanol.png" alt="Diagrama de Ciclo de Referencia" width="300">
+  <img src="./rust_deadlock_cycle_handdrawn.png" alt="Cangrejos en un ciclo de referencia (Deadlock)" width="400">
 </div>
 
 > **Pregunta:** ¿Qué crees que pasará con el contador de referencias de cada uno? ¿Llegará alguna vez a cero para que se limpien?
@@ -299,6 +307,10 @@ Normalmente, el compilador de Rust (el *borrow checker*) es muy estricto y revis
 > **Respuesta:** **Durante la ejecución (Runtime).**
 
 Mientras que la mayoría de los errores de memoria en Rust te detienen antes de compilar, `RefCell` espera hasta que el programa se está ejecutando para revisar las reglas. Esto nos da flexibilidad, pero tiene un precio: si rompes las reglas de préstamo en tiempo de ejecución, el programa entrará en pánico (**panic!**) y se cerrará. 💥
+
+<div align="center">
+  <img src="./rust_refcell_guard_handdrawn.png" alt="Ferris como guardia de seguridad" width="400">
+</div>
 
 ### Recordando las Reglas de Préstamo (*Borrowing Rules*)
 
@@ -411,6 +423,10 @@ Queremos definir un `struct Node` con estos requisitos:
 >     parent: RefCell<Weak<Node>>,
 > }
 > ```
+
+<div align="center">
+  <img src="./rust_smart_pointer_tree_handdrawn.png" alt="Árbol de cangrejos con Rc y Weak" width="400">
+</div>
 
 ### Analicemos el diseño implementado:
 
