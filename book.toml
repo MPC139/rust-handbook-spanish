@@ -2,3 +2,6 @@
 title = "Rust HandBook in Spanish"
 authors = ["Matias Ezequiel Pormi"]
 language = "spanish"
+
+[output.html]
+additional-css = ["src/custom.css"]

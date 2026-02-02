@@ -1,5 +1,10 @@
 # Smart Pointers
 
+<div align="center">
+  <img src="./rust_smart_pointers_handdrawn.png" alt="Ferris organizando Smart Pointers" width="400">
+</div>
+
+
 Vamos a desglosar el sistema de punteros inteligentes (Smart Pointers) de Rust. A diferencia de las referencias normales, estas son estructuras de datos actúan como punteros pero poseen capacidades adicionales de gestión de propiedad.
 
 Estos tipos son herramientas poderosas para manejar la memoria sin un recolector de basura (Garbage Collector). Para empezar a desenredar esto, dividiremos los temas en 3 secciones para finalmente integrar todo.
